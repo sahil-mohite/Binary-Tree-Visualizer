@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useSnackbar } from 'notistack';
+import { useEffect } from 'react';
+import BST from './Components/BST';
+import BSTree from './Components/BSTree';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+function BSTApp() {
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    
+    useEffect(() => {
+        enqueueSnackbar("This page is recommended to be used on desktop screen.", {
+            variant: 'warning',
+        });
+    }, [])
+
+    return (
+        <div className="App">
+            <BSTree />
+        </div>
+    );
 }
 
-export default App;
+export default BSTApp;

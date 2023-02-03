@@ -1,0 +1,72 @@
+const [grid, setGrid] = useState([
+        [null, null, null, null, null, null, null, 2, null, null, null, null, null, null, null ],
+        [null, null, null, null, null, null, 2, null , 2, null, null, null, null, null, null ],
+        [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ],
+        [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ],
+        [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ],
+    ])
+
+    const [grid, setGrid] = useState([
+        [null, null, null, null, null, null, null, 2   , null, null, null, null, null, null, null ],
+        [null, null, null, null, null, 2   , null, null, null, 2   , null, null, null, null, null ],
+        [null, null, null, null, 2   , null, 2   , null, 2   , null, 2   , null, null, null, null ],
+        [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ],
+        [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ],
+    ])
+
+
+    const [grid, setGrid] = useState([
+        [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0 ],
+        [0, 0, 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0, 0, 0 ],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    ])
+
+
+    const [grid, setGrid] = useState([
+        [2],
+        [2, 0, 0, 0, 2],
+        [2, 0, 2, 0, 2, 0, 2],
+    ])
+
+    const [grid, setGrid] = useState([
+        [2],
+        [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+        [2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2],
+        [2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2],
+        [2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2]
+    ])
+
+
+    grid.map((row, rowIndex) => {
+            row.map((cell, cellIndex) => {
+                if(cell != 0){
+                    return(
+                        <LineTo from={"r"+(rowIndex).toString() + "c" + cellIndex.toString()} to={"r"+(rowIndex+1).toString() + "c" + cellIndex.toString()} zIndex={-1} borderColor="red" borderWidth="5px"   />
+                    )
+                }
+            })
+        }
+
+
+
+    function debounce(fn, ms) {
+        let timer
+        return _ => {
+            clearTimeout(timer)
+            timer = setTimeout(_ => {
+                timer = null
+                fn.apply(this, arguments)
+            }, ms)
+        };
+    }
+
+    useEffect(() => {
+        const debouncedHandleResize = debounce(function handleResize() {
+            setScreenResize(screenResize + 1);
+            console.log(window.innerHeight , " ", window.innerWidth);
+        }, 5000)
+        
+        window.addEventListener('resize', debouncedHandleResize)
+    })
